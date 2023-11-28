@@ -1,0 +1,2 @@
+HiddenserviceDir /var/lib/tor/default
+HiddenservicePort 80 hidden-service:80

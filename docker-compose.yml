@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  
+  hidden-service:
+    build:
+        context: .
+        dockerfile: nginx/Dockerfile
+    networks:
+      - internal
+    volumes:
+      - ./www-data:/var/www/html
+
+  php:
+    image: php:fpm-alpine
+    networks:
+      - internal
+    volumes:
+      - ./www-data:/var/www/html
+      
+  tor-service:
+    build:
+      context: .
+      dockerfile: tor/Dockerfile
+    volumes:
+      - ./hiddenservice:/var/lib/tor
+    networks:
+      - internal
+    
+networks:
+  internal:
+    driver: bridge
+
+    
+  
+  
+
+    
